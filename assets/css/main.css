@@ -96,6 +96,12 @@ body {
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
 }
 
+.section-note {
+  margin-top: -0.3rem;
+  margin-bottom: 0.9rem;
+  color: #7f5240;
+}
+
 .hero {
   position: relative;
   min-height: 84vh;
@@ -118,7 +124,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 680px;
+  max-width: 760px;
 }
 
 .hero-overlay {
@@ -143,7 +149,8 @@ h1 {
 
 .subtitle {
   color: #7e2f2f;
-  font-size: 1.2rem;
+  font-size: 1.24rem;
+  margin-bottom: 0.9rem;
 }
 
 .intro {
@@ -162,6 +169,38 @@ h1 {
   box-shadow: 0 10px 26px rgba(149, 23, 23, 0.16);
   object-fit: cover;
   min-height: 300px;
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+}
+
+.hero-highlight-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff9f0;
+  padding: 0.72rem;
+}
+
+.hero-highlight-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  color: #7e2f2f;
+}
+
+.hero-highlight-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -241,6 +280,7 @@ h1 {
 
 .values-grid {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .card {
@@ -273,6 +313,17 @@ h1 {
 
 .figure-actions {
   margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.figure-preview {
+  color: var(--text-muted);
+}
+
+.meaning-panel {
+  margin-top: 0.2rem;
 }
 
 .site-layout {
@@ -309,6 +360,12 @@ h1 {
   background: var(--surface);
   padding: 1rem;
   box-shadow: 0 4px 14px rgba(145, 67, 24, 0.06);
+}
+
+.site-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .site-image {
@@ -521,6 +578,10 @@ input[type="text"] {
 }
 
 @media (max-width: 900px) {
+  .hero-highlights {
+    grid-template-columns: 1fr;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
   }
