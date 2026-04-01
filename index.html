@@ -103,6 +103,7 @@
       <div class="container">
         <h2 class="section-title reveal">AI 智能讲解</h2>
         <div class="guide-wrap reveal">
+          <p class="knowledge-tip">讲解内容由馆内知识库生成，可根据主题与风格切换输出详略。</p>
           <div class="guide-basic-questions" id="guideBasicQuestions"></div>
           <div class="control-group">
             <label for="guideTopic">讲解主题</label>
@@ -120,7 +121,9 @@
             <button class="btn btn-primary" id="generateGuide">生成讲解</button>
             <button class="btn btn-ghost" id="reGuide">重新讲解</button>
           </div>
+          <p class="guide-status" id="guideStatus">状态：等待生成</p>
           <article class="ai-output" id="guideOutput" aria-live="polite"></article>
+          <div class="source-tags" id="guideSourceTags"></div>
         </div>
       </div>
     </section>
@@ -134,6 +137,8 @@
             <input id="qaInput" type="text" placeholder="请输入你的问题..." aria-label="问题输入">
             <button class="btn btn-primary" id="askBtn">提问</button>
           </div>
+          <article class="ai-output qa-result" id="qaResult" aria-live="polite">请先选择示例问题或直接输入问题。</article>
+          <div class="sample-list" id="followupQuestions"></div>
           <div class="chat-window" id="chatWindow" aria-live="polite"></div>
         </div>
       </div>
@@ -170,8 +175,7 @@
           <article class="panel">
             <h3>资源说明</h3>
             <p>
-              当前版本示意图采用渐变与图形占位，不含受限版权素材。若后续接入第三方图片/音频，请在 README
-              中补充来源与授权说明。
+              当前版本关键页面已替换为真实、合法可引用素材，并在 README 的“素材与引用来源”中列出出处与许可信息。
             </p>
           </article>
           <article class="panel">
@@ -187,8 +191,8 @@
 
   <div id="figureModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="figureModalTitle">
     <div class="modal-content">
-      <button class="modal-close" id="closeModal" aria-label="关闭详情">×</button>
-      <h3 id="figureModalTitle"></h3>
+      <button class="modal-close" id="closeModal" aria-label="关闭详情">关闭</button>
+      <h3 id="figureModalTitle">人物详情</h3>
       <p id="figureModalKeywords" class="tagline"></p>
       <p id="figureModalDesc"></p>
       <div id="figureModalStory"></div>
@@ -197,8 +201,8 @@
 
   <div id="siteStoryModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="siteStoryTitle">
     <div class="modal-content">
-      <button class="modal-close" id="closeSiteStory" aria-label="关闭旧址故事">×</button>
-      <h3 id="siteStoryTitle"></h3>
+      <button class="modal-close" id="closeSiteStory" aria-label="关闭旧址故事">关闭</button>
+      <h3 id="siteStoryTitle">旧址故事</h3>
       <div id="siteStoryBody"></div>
     </div>
   </div>
