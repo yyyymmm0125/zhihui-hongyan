@@ -363,6 +363,82 @@ h1 {
   margin-top: 0.2rem;
 }
 
+.section-overview .overview-lead {
+  margin-top: -0.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.65;
+}
+
+.section-overview .overview-block-title {
+  margin: 1.1rem 0 0.55rem;
+  font-size: 1.15rem;
+  color: #7a2a2a;
+}
+
+.section-overview .overview-intro-panel {
+  margin-bottom: 0.2rem;
+}
+
+.overview-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.overview-timeline-grid li {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  background: var(--surface);
+  color: var(--text-muted);
+  line-height: 1.55;
+  box-shadow: 0 4px 12px rgba(145, 67, 24, 0.05);
+}
+
+.overview-timeline-grid li strong {
+  color: var(--primary);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.section-overview .overview-map-panel {
+  margin-bottom: 0.3rem;
+}
+
+.section-overview .overview-map-thumb {
+  max-height: 140px;
+  margin-bottom: 0;
+}
+
+.overview-values-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 0.35rem;
+}
+
+.meaning-list li {
+  margin: 0.55rem 0;
+}
+
+@media (max-width: 1024px) {
+  .overview-values-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .overview-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-values-four {
+    grid-template-columns: 1fr;
+  }
+}
+
 .site-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
