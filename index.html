@@ -31,11 +31,25 @@
         <div class="hero-content reveal">
           <p class="eyebrow">红色文化传播 × 数字展馆 × AI交互</p>
           <h1>智绘红岩</h1>
-          <p class="subtitle">让红岩精神在数字时代焕发新的生命力</p>
-          <p class="intro">
-            本项目通过数字展馆、智能讲解与互动体验，探索 AI 技术赋能红色文化传播的新路径。
-          </p>
-          <a class="btn btn-primary" href="#overview">进入展馆</a>
+          <p class="subtitle">让红岩精神从“被观看”走向“可交互、可感知、可传播”</p>
+          <div class="hero-highlights">
+            <article class="hero-highlight-card">
+              <h3>AI 智能讲解</h3>
+              <p>按人物与旧址主题一键生成讲解，支持三种风格详略切换。</p>
+            </article>
+            <article class="hero-highlight-card">
+              <h3>红色旧址数字导览</h3>
+              <p>导览节点、历史意义、故事弹窗与 AI 讲解联动，形成完整参观路径。</p>
+            </article>
+            <article class="hero-highlight-card">
+              <h3>精神问答互动体验</h3>
+              <p>通过快捷问答与互动挑战，让价值理解从阅读走向主动探索。</p>
+            </article>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#overview">进入数字展馆</a>
+            <a class="btn btn-ghost" href="#qa">立即体验 AI 问答</a>
+          </div>
         </div>
         <figure class="hero-visual reveal">
           <img src="./assets/images/chongqing-art-museum.jpg" alt="重庆城市红色文化相关建筑场景">
@@ -50,24 +64,26 @@
         <div class="overview-grid">
           <article class="panel reveal">
             <h3>精神简介</h3>
-            <p>
-              红岩精神形成于革命斗争实践，凝结了坚定理想信念、爱国奉献、百折不挠和团结奋斗的价值追求，
-              是新时代青年奋进的重要精神资源。
-            </p>
+            <p id="overviewIntro"></p>
           </article>
           <article class="panel reveal">
-            <h3>历史背景</h3>
+            <h3>形成背景</h3>
             <img class="panel-image" src="./assets/images/chongqing-map.png" alt="重庆区域示意图">
             <ul class="timeline" id="timeline"></ul>
           </article>
         </div>
         <div class="card-grid values-grid" id="valueCards"></div>
+        <article class="panel reveal meaning-panel">
+          <h3 id="meaningTitle">时代意义</h3>
+          <ul id="meaningPoints" class="timeline"></ul>
+        </article>
       </div>
     </section>
 
     <section id="figures" class="section section-alt">
       <div class="container">
         <h2 class="section-title reveal">人物与故事展区</h2>
+        <p class="section-note reveal">点击人物了解完整故事，或直接使用“AI 听他/她讲”快速进入讲解模式。</p>
         <div class="card-grid" id="figureCards"></div>
       </div>
     </section>
@@ -75,6 +91,7 @@
     <section id="sites" class="section">
       <div class="container">
         <h2 class="section-title reveal">红色旧址数字导览</h2>
+        <p class="section-note reveal">按“导览列表 → 历史信息 → 故事深读 → AI 讲解地点”路径完成一次线上参观。</p>
         <div class="site-layout reveal">
           <aside class="site-list" id="siteList" aria-label="导览地点列表"></aside>
           <article class="site-detail" id="siteDetail"></article>
