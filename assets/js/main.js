@@ -207,6 +207,9 @@ function renderGuideBasicQuestions() {
 }
 
 function renderOverview(data) {
+  const intro = document.getElementById("overviewIntro");
+  intro.textContent = data.intro || "红岩精神是中国共产党人革命斗争实践中形成的宝贵精神财富。";
+
   const timeline = document.getElementById("timeline");
   timeline.innerHTML = data.timeline.map((item) => `<li><strong>${item.period}</strong>：${item.desc}</li>`).join("");
 
@@ -222,6 +225,16 @@ function renderOverview(data) {
     `
     )
     .join("");
+
+  const meaningTitle = document.getElementById("meaningTitle");
+  const meaningPoints = document.getElementById("meaningPoints");
+  if (data.meaning && Array.isArray(data.meaning.points)) {
+    meaningTitle.textContent = data.meaning.title || "时代意义";
+    meaningPoints.innerHTML = data.meaning.points.map((point) => `<li>${point}</li>`).join("");
+  } else {
+    meaningTitle.textContent = "时代意义";
+    meaningPoints.innerHTML = "<li>在新时代持续传承红岩精神，有助于青年形成清晰的价值判断与责任意识。</li>";
+  }
 }
 
 function renderFigures(figures) {
@@ -234,9 +247,11 @@ function renderFigures(figures) {
         <span class="tag">人物风采</span>
         <h3>${figure.name}</h3>
         <p>${figure.intro}</p>
+        <p class="figure-preview">${figure.preview || briefText(figure.storyParagraphs && figure.storyParagraphs[0], 76)}</p>
         <p class="tagline">${figure.keywords.join(" · ")}</p>
         <div class="figure-actions">
           <button class="btn btn-ghost figure-more" data-index="${idx}">了解更多</button>
+          <button class="btn btn-primary figure-ai" data-topic="${figure.name}">AI 听他/她讲</button>
         </div>
       </article>
     `
@@ -245,6 +260,10 @@ function renderFigures(figures) {
 
   container.querySelectorAll(".figure-more").forEach((btn) => {
     btn.addEventListener("click", () => openFigureModal(figures[Number(btn.dataset.index)]));
+  });
+
+  container.querySelectorAll(".figure-ai").forEach((btn) => {
+    btn.addEventListener("click", () => jumpToGuideTopic(btn.dataset.topic || ""));
   });
 }
 
@@ -291,16 +310,24 @@ function renderSites(sites) {
 }
 
 function renderSiteDetail(site) {
+  const storyPreview = briefText(site.storyParagraphs && site.storyParagraphs[0], 96);
   const detail = document.getElementById("siteDetail");
   detail.innerHTML = `
     ${site.image ? `<img class="site-image" src="${site.image}" alt="${site.name}图片">` : `<div class="site-image" aria-hidden="true"></div>`}
     <h3>${site.name}</h3>
     <p><strong>展区概述：</strong>${site.summary}</p>
     <p><strong>历史意义：</strong>${site.detail}</p>
-    <button class="btn btn-ghost" id="siteStoryBtn" type="button">点击地点查看故事</button>
+    <p><strong>故事切片：</strong>${storyPreview}</p>
+    <div class="site-actions">
+      <button class="btn btn-ghost" id="siteStoryBtn" type="button">点击地点查看故事</button>
+      <button class="btn btn-primary" id="siteAiBtn" type="button">AI讲解这个地点</button>
+    </div>
   `;
 
   document.getElementById("siteStoryBtn").addEventListener("click", () => openSiteStoryModal(site));
+  document.getElementById("siteAiBtn").addEventListener("click", () => {
+    jumpToGuideTopic(site.aiTopic || site.name);
+  });
 }
 
 function openSiteStoryModal(site) {
@@ -360,6 +387,23 @@ function formatGuideAnswerByStyle(style, answer) {
     return `[青年版问答] ${answer} 这和我们在学习与实践中的责任担当直接相关。`;
   }
   return `[详版问答] ${answer} 从红岩精神谱系看，这一问题的关键在于把理想信念转化为持续行动，并在集体协作中体现社会责任。`;
+}
+
+function jumpToGuideTopic(topic) {
+  if (!topic) return;
+  const select = document.getElementById("guideTopic");
+  const options = Array.from(select.options).map((option) => option.value);
+  if (options.includes(topic)) {
+    select.value = topic;
+    renderGuide();
+  }
+  const guideSection = document.getElementById("guide");
+  guideSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function briefText(text, length) {
+  if (!text) return "暂无内容。";
+  return text.length > length ? `${text.slice(0, length)}...` : text;
 }
 
 function typeText(target, text, speed) {
