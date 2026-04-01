@@ -17,8 +17,8 @@ const state = {
 let guideTimer = null;
 const guideBasicQuestions = [
   "什么是红岩精神",
-  "为什么值得青年学习",
-  "这个旧址的历史意义"
+  "为什么红岩精神值得今天的青年学习",
+  "周公馆旧址体现了什么历史价值"
 ];
 
 const fallbackData = {
@@ -270,7 +270,7 @@ function renderFigures(figures) {
         <p class="figure-preview">${figure.preview || briefText(figure.storyParagraphs && figure.storyParagraphs[0], 76)}</p>
         <p class="tagline">${figure.keywords.join(" · ")}</p>
         <div class="figure-actions">
-          <button class="btn btn-ghost figure-more" data-index="${idx}">了解更多</button>
+          <button class="btn btn-ghost figure-more" data-index="${idx}">查看详情</button>
           <button class="btn btn-primary figure-ai" data-topic="${figure.name}">AI 听他/她讲</button>
         </div>
       </article>
@@ -293,7 +293,11 @@ function openFigureModal(detail) {
   document.getElementById("figureModalDesc").textContent = detail.intro;
   const storyWrap = document.getElementById("figureModalStory");
   const paragraphs = detail.storyParagraphs || [detail.story || "暂无故事内容。"];
-  storyWrap.innerHTML = paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("");
+  const interpretation = detail.interpretation || "该人物以实际行动诠释了红岩精神中的信念、担当与团结奋斗。";
+  storyWrap.innerHTML = `
+    ${paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+    <p class="figure-interpretation"><strong>精神解读：</strong>${interpretation}</p>
+  `;
   const modal = document.getElementById("figureModal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
@@ -331,12 +335,16 @@ function renderSites(sites) {
 
 function renderSiteDetail(site) {
   const storyPreview = briefText(site.storyParagraphs && site.storyParagraphs[0], 96);
+  const related = Array.isArray(site.relatedFigures) && site.relatedFigures.length
+    ? site.relatedFigures.join("、")
+    : "暂无";
   const detail = document.getElementById("siteDetail");
   detail.innerHTML = `
     ${site.image ? `<img class="site-image" src="${site.image}" alt="${site.name}图片">` : `<div class="site-image" aria-hidden="true"></div>`}
     <h3>${site.name}</h3>
     <p><strong>展区概述：</strong>${site.summary}</p>
     <p><strong>历史意义：</strong>${site.detail}</p>
+    <p><strong>相关人物：</strong>${related}</p>
     <p><strong>故事切片：</strong>${storyPreview}</p>
     <div class="site-actions">
       <button class="btn btn-ghost" id="siteStoryBtn" type="button">点击地点查看故事</button>
@@ -403,7 +411,7 @@ function renderGuideQuestionAnswer(question) {
   if (guideTimer) window.clearInterval(guideTimer);
   status.textContent = "状态：正在根据馆内知识库生成讲解...";
   output.textContent = "";
-  renderGuideSourceTags(question.includes("旧址") ? "红岩革命纪念馆" : "江竹筠（江姐）");
+  renderGuideSourceTags(question.includes("周公馆") ? "周公馆旧址" : "江竹筠（江姐）");
   typeText(output, styled, 14, () => {
     status.textContent = "状态：讲解生成完成";
   });
@@ -577,14 +585,14 @@ function resolveGuidePresetQuestion(question, style) {
       ? "红岩精神是中国共产党人在重庆革命斗争实践中形成的精神品格。"
       : "红岩精神形成于革命斗争实践，核心是理想信念、爱国情怀、斗争意志和浩然正气。";
   }
-  if (question.includes("为什么值得青年学习")) {
+  if (question.includes("为什么红岩精神值得今天的青年学习")) {
     return style === "plain"
       ? "它帮助青年把个人成长与国家责任连接起来。"
       : "红岩精神能引导青年在压力环境中保持长期目标，把责任担当落实到学习与实践中。";
   }
   return style === "plain"
-    ? "旧址是理解红岩精神的重要历史现场。"
-    : "旧址承载着真实历史记忆，帮助我们理解革命者如何在极端环境中坚守信仰并形成红岩精神。";
+    ? "周公馆旧址见证了南方局在复杂局势下坚持原则、开展统战与社会联络的历史实践。"
+    : "周公馆旧址是理解红岩精神实践维度的重要现场，它不仅承载历史记忆，也展示了革命者如何在现实压力中坚持方向、凝聚共识并推进公共目标。";
 }
 
 function renderGuideSourceTags(topic) {
