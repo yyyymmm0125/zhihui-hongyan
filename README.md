@@ -91,7 +91,7 @@ zhihui-hongyan/
 ## 评委访问方式
 
 - 建议浏览器：Chrome 最新版。
-- 在线访问（GitHub Pages）：<https://fanyang-888.github.io/zhihui-hongyan/>
+- 在线访问（GitHub Pages）：<https://yyyymmm0125.github.io/zhihui-hongyan/>
 - 本地访问：
   - 在项目目录运行 `python3 -m http.server 8000`
   - 打开 `http://localhost:8000`
