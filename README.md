@@ -49,9 +49,9 @@ zhihui-hongyan/
         └── quiz.json
 ```
 
-## 资源与引用说明
+## 素材与引用来源
 
-- 当前版本插图均为可免费使用且可署名来源，已下载到 `assets/images/` 以保障离线演示稳定。
+- 当前版本关键页面均使用真实、合法可引用图片素材，已下载到 `assets/images/` 以保障离线演示稳定。
 
 ### 插图素材与许可
 
@@ -91,7 +91,13 @@ zhihui-hongyan/
 ## 评委访问方式
 
 - 建议浏览器：Chrome 最新版。
-- 在线访问（GitHub Pages）：<https://fanyang-888.github.io/zhihui-hongyan/>
+- 在线访问（GitHub Pages）：<https://yyyymmm0125.github.io/zhihui-hongyan/>
 - 本地访问：
   - 在项目目录运行 `python3 -m http.server 8000`
   - 打开 `http://localhost:8000`
+
+## Chrome 测试环境与加载说明
+
+- 测试环境：macOS + Chrome 最新稳定版。
+- 建议开启网络访问以便加载在线部署资源；离线演示请使用本地静态服务方式运行。
+- 页面包含图片、JSON 数据和前端交互脚本，首次加载后再次访问会更流畅（浏览器缓存生效）。
