@@ -237,8 +237,8 @@ function renderOverview(data) {
   valueCards.innerHTML = data.values
     .map(
       (value) => `
-      <article class="card value-card reveal">
-        <span class="tag">核心价值</span>
+      <article class="card value-card">
+        <span class="tag">核心内涵</span>
         <h3>${value.name}</h3>
         <p>${value.desc}</p>
       </article>
