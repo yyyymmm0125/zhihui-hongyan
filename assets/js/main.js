@@ -72,6 +72,7 @@ const fallbackData = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  setupTheme();
   setupNav();
   setupReveal();
   setupModals();
@@ -102,6 +103,20 @@ function setupNav() {
     { rootMargin: "-40% 0px -50% 0px", threshold: 0.01 }
   );
   sections.forEach((section) => observer.observe(section));
+}
+
+function setupTheme() {
+  const toggle = document.getElementById("themeToggle");
+  const saved = localStorage.getItem("theme");
+  const initial = saved === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", initial);
+  toggle.textContent = initial === "dark" ? "浅色模式" : "暗色模式";
+  toggle.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    toggle.textContent = next === "dark" ? "浅色模式" : "暗色模式";
+  });
 }
 
 function setupReveal() {
