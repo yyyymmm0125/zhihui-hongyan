@@ -59,11 +59,11 @@ zhihui-hongyan/
 - `chongqing-art-museum.jpg`
   - 来源：<https://commons.wikimedia.org/wiki/File:Chongqing_Art_Museum.jpg>
   - 许可：CC BY-SA 4.0
-  - 使用位置：首页主视觉、人物与旧址模块插图
+  - 使用位置：首页主视觉、红岩革命纪念馆导览图
 - `jiefangbei-2022.jpg`
   - 来源：<https://commons.wikimedia.org/wiki/File:%E9%87%8D%E5%BA%86%E8%A7%A3%E6%94%BE%E7%A2%912022.jpg>
   - 许可：CC BY-SA 4.0
-  - 使用位置：人物与旧址模块插图
+  - 使用位置：桂园导览图
 - `chongqing-map.svg`
   - 来源：<https://commons.wikimedia.org/wiki/File:Map_of_China_Chongqing.svg>
   - 许可：CC BY-SA 3.0
@@ -72,10 +72,38 @@ zhihui-hongyan/
   - 来源：<https://commons.wikimedia.org/wiki/File:Chongqing-map.png>
   - 许可：CC BY-SA 3.0
   - 使用位置：概览页历史背景图、旧址模块插图
-- `zhazidong-exhibit.jpg`
-  - 来源：<https://commons.wikimedia.org/wiki/File:%E6%B8%A3%E6%BB%93%E6%B4%9E%E5%B1%95%E5%87%BA%E7%9A%84%E5%BD%93%E5%B9%B4%E5%88%91%E5%85%B7.jpg>
+- `zhougongguan-panorama.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:%E5%91%A8%E5%85%AC%E9%A4%A8%E5%85%A8%E6%99%AF.jpg>
   - 许可：CC BY-SA 4.0
-  - 使用位置：渣滓洞旧址导览图片
+  - 使用位置：周公馆旧址导览图
+- `zhazidong-site.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:ChongqingZhazidong.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：渣滓洞旧址导览图
+- `xinhua-daily-hq-site.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:CQXinhuaNewspaper.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：《新华日报》总馆旧址导览图
+- `zengjiayan-50-site.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:Chongqing_Zengjiayan_50_hao_2014.04.21_10-59-13.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：曾家岩50号旧址导览图
+- `jiangzhuyun-letter.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:Jiang_Zhuyuns_letter.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：江竹筠人物卡史料图
+- `xuxiaoxuan-letter.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:%E8%AE%B8%E6%99%93%E8%BD%A9%E7%8B%B1%E4%B8%AD%E5%AF%84%E7%BB%99%E7%88%B1%E4%BA%BA%E5%A7%9C%E7%BB%AE%E5%8D%8E%E7%9A%84%E4%BF%A1.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：许晓轩人物卡史料图
+- `hongyan-museum-5118.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:%E7%BA%A2%E5%B2%A9%E9%AD%82%E5%8D%9A%E7%89%A9%E9%A6%86_5118.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：陈然人物卡相关图
+- `hongyan-museum-5123.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:%E7%BA%A2%E5%B2%A9%E9%AD%82%E5%8D%9A%E7%89%A9%E9%A6%86_5123.jpg>
+  - 许可：CC BY-SA 4.0
+  - 使用位置：王朴人物卡相关图
 
 ### 史实参考来源
 
