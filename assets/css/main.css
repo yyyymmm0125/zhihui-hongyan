@@ -492,6 +492,12 @@ input[type="text"] {
   font-size: 0.9rem;
 }
 
+.output-title {
+  margin: 0.1rem 0 0.45rem;
+  color: #7a2a2a;
+  font-weight: 600;
+}
+
 .ai-output,
 .quiz-result {
   border: 1px dashed color-mix(in srgb, var(--primary) 45%, transparent);
@@ -608,6 +614,13 @@ input[type="text"] {
 
 .tagline {
   color: var(--gold);
+}
+
+.figure-interpretation {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--border);
+  color: #6e3a2f;
 }
 
 .modal {
