@@ -394,6 +394,11 @@ h1 {
   margin-bottom: 0.8rem;
 }
 
+.knowledge-tip {
+  margin: 0 0 0.6rem;
+  color: #7f5240;
+}
+
 .guide-q-btn {
   border: 1px solid var(--border);
   background: #fff8ee;
@@ -436,6 +441,12 @@ input[type="text"] {
   margin: 0.8rem 0 0.6rem;
 }
 
+.guide-status {
+  margin: 0 0 0.5rem;
+  color: #8f0c1e;
+  font-size: 0.9rem;
+}
+
 .ai-output,
 .quiz-result {
   border: 1px dashed color-mix(in srgb, var(--primary) 45%, transparent);
@@ -444,6 +455,26 @@ input[type="text"] {
   min-height: 90px;
   padding: 0.8rem;
   color: #6b312b;
+}
+
+.qa-result {
+  margin-bottom: 0.6rem;
+}
+
+.source-tags {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.source-tag {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff7e8;
+  color: #7a2f2f;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.84rem;
 }
 
 .sample-list {
@@ -516,6 +547,20 @@ input[type="text"] {
   color: var(--text-muted);
 }
 
+.quiz-explain {
+  margin-top: 0.45rem;
+  color: #7f5240;
+  font-size: 0.92rem;
+}
+
+.quiz-explain.correct {
+  color: #22683a;
+}
+
+.quiz-explain.wrong {
+  color: #9a2a2a;
+}
+
 .tagline {
   color: var(--gold);
 }
@@ -547,10 +592,12 @@ input[type="text"] {
   position: absolute;
   right: 0.6rem;
   top: 0.5rem;
-  border: 0;
-  background: transparent;
+  border: 1px solid var(--border);
+  background: #fff8ee;
   color: var(--primary);
-  font-size: 1.4rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
   cursor: pointer;
 }
 
