@@ -59,24 +59,58 @@
       <div class="hero-overlay" aria-hidden="true"></div>
     </section>
 
-    <section id="overview" class="section">
+    <section id="overview" class="section section-overview">
       <div class="container">
-        <h2 class="section-title reveal">红岩精神概览</h2>
-        <div class="overview-grid">
-          <article class="panel reveal">
-            <h3>精神简介</h3>
-            <p id="overviewIntro"></p>
+        <h2 class="section-title">红岩精神概览</h2>
+        <p class="section-note overview-lead">
+          以下同时呈现<strong>精神简介</strong>、<strong>三个历史节点</strong>、<strong>四项核心内涵</strong>与<strong>时代意义</strong>，便于评委滚动浏览即可把握内容厚度。
+        </p>
+        <article class="panel overview-intro-panel">
+          <h3>精神简介</h3>
+          <p id="overviewIntro">
+            红岩精神形成于革命斗争实践，凝结了坚定理想信念、爱国奉献、百折不挠和团结奋斗的价值追求，是新时代青年奋进的重要精神资源。
+          </p>
+        </article>
+        <h3 class="overview-block-title">形成背景：三个历史节点</h3>
+        <ul class="overview-timeline-grid" id="timeline">
+          <li><strong>全面抗战时期</strong>：中共中央南方局在重庆开展统战、宣传与群众工作，红岩精神开始孕育形成。</li>
+          <li><strong>解放战争初期</strong>：重庆谈判与政治斗争实践进一步丰富了红岩精神的内涵。</li>
+          <li><strong>解放战争后期</strong>：渣滓洞、白公馆英烈在狱中斗争中不屈不挠，红岩精神在血与火中淬炼升华。</li>
+        </ul>
+        <article class="panel overview-map-panel">
+          <h3>地理示意</h3>
+          <img class="panel-image overview-map-thumb" src="./assets/images/chongqing-map.png" alt="重庆区域示意图">
+        </article>
+        <h3 class="overview-block-title">核心内涵：四个关键词</h3>
+        <div class="card-grid values-grid overview-values-four" id="valueCards">
+          <article class="card value-card">
+            <span class="tag">核心内涵</span>
+            <h3>坚如磐石的理想信念</h3>
+            <p>无论环境多么艰险，都始终保持对革命理想与人民事业的忠诚。</p>
           </article>
-          <article class="panel reveal">
-            <h3>形成背景</h3>
-            <img class="panel-image" src="./assets/images/chongqing-map.png" alt="重庆区域示意图">
-            <ul class="timeline" id="timeline"></ul>
+          <article class="card value-card">
+            <span class="tag">核心内涵</span>
+            <h3>和衷共济的爱国情怀</h3>
+            <p>把国家和民族利益置于个人得失之上，团结一切可以团结的力量。</p>
+          </article>
+          <article class="card value-card">
+            <span class="tag">核心内涵</span>
+            <h3>艰苦卓绝的凛然斗志</h3>
+            <p>面对高压与困境仍勇于斗争、善于斗争，展现革命者的精神风骨。</p>
+          </article>
+          <article class="card value-card">
+            <span class="tag">核心内涵</span>
+            <h3>百折不挠的浩然正气</h3>
+            <p>在严酷考验面前守住气节，宁折不弯，体现共产党人的崇高人格。</p>
           </article>
         </div>
-        <div class="card-grid values-grid" id="valueCards"></div>
-        <article class="panel reveal meaning-panel">
+        <article class="panel meaning-panel">
           <h3 id="meaningTitle">时代意义</h3>
-          <ul id="meaningPoints" class="timeline"></ul>
+          <ul id="meaningPoints" class="timeline meaning-list">
+            <li>帮助大学生在复杂信息环境中建立稳定的价值坐标，明确什么是值得长期坚持的方向。</li>
+            <li>把“理想信念”从抽象概念转化为可实践的行动方法，在学习、科研和社会服务中体现责任担当。</li>
+            <li>以团结协作和长期主义回应现实挑战，推动个人成长与国家发展同频共振。</li>
+          </ul>
         </article>
       </div>
     </section>
