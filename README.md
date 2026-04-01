@@ -52,14 +52,18 @@ zhihui-hongyan/
 
 ## 素材与引用来源
 
-- 当前版本关键页面均使用真实、合法可引用图片素材，已下载到 `assets/images/` 以保障离线演示稳定。
+- 本站图片素材存放于 `assets/images/`，均为可公开引用的授权资源，便于离线演示与评审核查。
 
 ### 插图素材与许可
 
+- `hero-hongyan-memorial.jpg`
+  - 来源：<https://commons.wikimedia.org/wiki/File:%E6%B8%9D%E4%B8%AD_%E7%BA%A2%E5%B2%A9%E7%BA%AA%E5%BF%B5%E9%A6%86%E5%A4%96%C3%97%E5%BB%BA%E5%85%9A100%E5%B9%B4_02.jpg>
+  - 许可：CC BY-SA 4.0（站内为 1280px 衍生展示尺寸）
+  - 使用位置：首页主视觉
 - `chongqing-art-museum.jpg`
   - 来源：<https://commons.wikimedia.org/wiki/File:Chongqing_Art_Museum.jpg>
   - 许可：CC BY-SA 4.0
-  - 使用位置：首页主视觉、红岩革命纪念馆导览图
+  - 使用位置：红岩革命纪念馆导览图
 - `jiefangbei-2022.jpg`
   - 来源：<https://commons.wikimedia.org/wiki/File:%E9%87%8D%E5%BA%86%E8%A7%A3%E6%94%BE%E7%A2%912022.jpg>
   - 许可：CC BY-SA 4.0
