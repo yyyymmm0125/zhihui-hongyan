@@ -16,10 +16,9 @@ const state = {
 
 let guideTimer = null;
 const guideBasicQuestions = [
-  "红岩精神的核心内涵是什么？",
-  "为什么红岩精神值得当代青年学习？",
-  "白公馆旧址的历史意义是什么？",
-  "渣滓洞旧址体现了什么精神？"
+  "什么是红岩精神",
+  "为什么值得青年学习",
+  "这个旧址的历史意义"
 ];
 
 const fallbackData = {
@@ -157,6 +156,12 @@ function setupActions() {
     const btn = event.target.closest(".guide-q-btn");
     if (!btn) return;
     renderGuideQuestionAnswer(btn.dataset.question || "");
+  });
+  document.getElementById("followupQuestions").addEventListener("click", (event) => {
+    const btn = event.target.closest(".sample-btn");
+    if (!btn) return;
+    document.getElementById("qaInput").value = btn.textContent;
+    handleQuestionSubmit();
   });
 }
 
@@ -355,27 +360,38 @@ function renderGuide() {
   const topic = document.getElementById("guideTopic").value;
   const style = document.getElementById("guideStyle").value;
   const output = document.getElementById("guideOutput");
+  const status = document.getElementById("guideStatus");
   if (!topic || !state.guideData[topic]) {
     output.textContent = "请选择主题后开始讲解。";
+    status.textContent = "状态：等待生成";
     return;
   }
 
   output.textContent = "";
   if (guideTimer) window.clearInterval(guideTimer);
+  status.textContent = "状态：正在根据馆内知识库生成讲解...";
   const styleLabel = style === "plain" ? "简版讲解" : style === "youth" ? "青年版讲解" : "详版讲解";
   const text = `[${styleLabel}] ${state.guideData[topic][style] || "该讲解风格暂未配置。"}`;
-  typeText(output, text, 18);
+  renderGuideSourceTags(topic);
+  typeText(output, text, 18, () => {
+    status.textContent = "状态：讲解生成完成";
+  });
 }
 
 function renderGuideQuestionAnswer(question) {
   if (!question) return;
   const output = document.getElementById("guideOutput");
+  const status = document.getElementById("guideStatus");
   const style = document.getElementById("guideStyle").value;
-  const base = resolveAnswer(question, state.qaData.rules, state.qaData.fallback);
+  const base = resolveGuidePresetQuestion(question, style);
   const styled = formatGuideAnswerByStyle(style, base);
   if (guideTimer) window.clearInterval(guideTimer);
+  status.textContent = "状态：正在根据馆内知识库生成讲解...";
   output.textContent = "";
-  typeText(output, styled, 14);
+  renderGuideSourceTags(question.includes("旧址") ? "红岩革命纪念馆" : "江竹筠（江姐）");
+  typeText(output, styled, 14, () => {
+    status.textContent = "状态：讲解生成完成";
+  });
 }
 
 function formatGuideAnswerByStyle(style, answer) {
@@ -406,12 +422,15 @@ function briefText(text, length) {
   return text.length > length ? `${text.slice(0, length)}...` : text;
 }
 
-function typeText(target, text, speed) {
+function typeText(target, text, speed, onDone) {
   let index = 0;
   guideTimer = setInterval(() => {
     target.textContent += text[index] || "";
     index += 1;
-    if (index >= text.length) window.clearInterval(guideTimer);
+    if (index >= text.length) {
+      window.clearInterval(guideTimer);
+      if (typeof onDone === "function") onDone();
+    }
   }, speed);
 }
 
@@ -432,7 +451,10 @@ function handleQuestionSubmit() {
   if (!question) return;
   appendBubble("user", question);
   const answer = resolveAnswer(question, state.qaData.rules, state.qaData.fallback);
-  window.setTimeout(() => appendBubble("ai", answer), 260);
+  window.setTimeout(() => {
+    appendBubble("ai", answer);
+    renderQaResult(question, answer);
+  }, 260);
   input.value = "";
 }
 
@@ -469,6 +491,7 @@ function renderQuiz(quizData) {
         <fieldset class="quiz-item">
           <legend>${qIndex + 1}. ${item.question}</legend>
           ${options}
+          <p class="quiz-explain" id="quizExplain${qIndex}">解析：请先提交答卷查看。</p>
         </fieldset>
       `;
     })
@@ -477,13 +500,26 @@ function renderQuiz(quizData) {
 
 function submitQuiz() {
   let score = 0;
+  let detailHtml = "";
   state.quizData.forEach((item, index) => {
     const selected = document.querySelector(`input[name="q${index}"]:checked`);
-    if (selected && Number(selected.value) === item.answerIndex) score += 1;
+    const isCorrect = selected && Number(selected.value) === item.answerIndex;
+    if (isCorrect) score += 1;
+    const explain = document.getElementById(`quizExplain${index}`);
+    const prefix = isCorrect ? "回答正确：" : "回答有误：";
+    explain.className = `quiz-explain ${isCorrect ? "correct" : "wrong"}`;
+    explain.textContent = `${prefix}${item.explanation || "请结合主题内容继续学习。"}`
+    detailHtml += `<li>${index + 1}. ${isCorrect ? "正确" : "需加强"} - ${item.explanation || ""}</li>`;
   });
   const result = document.getElementById("quizResult");
-  const comment = getQuizComment(score, state.quizData.length);
-  result.innerHTML = `<h3>你的得分：${score} / ${state.quizData.length}</h3><p>${comment}</p>`;
+  const profile = getSpiritProfile(score, state.quizData.length);
+  result.innerHTML = `
+    <h3>你的得分：${score} / ${state.quizData.length}</h3>
+    <p><strong>你的精神画像：</strong>${profile}</p>
+    <p>${getQuizComment(score, state.quizData.length)}</p>
+    <ul>${detailHtml}</ul>
+    <a class="btn btn-ghost" href="#overview">返回展馆继续学习</a>
+  `;
 }
 
 function resetQuiz() {
@@ -498,4 +534,49 @@ function getQuizComment(score, total) {
   if (score >= total - 1) return "表现优秀！你已把握核心内涵，再结合实践会更深入。";
   if (score >= Math.ceil(total / 2)) return "不错的开始！建议回看人物与旧址内容，再次挑战。";
   return "继续加油！建议先浏览概览与讲解模块，再来冲击更高分。";
+}
+
+function getSpiritProfile(score, total) {
+  if (score === total) return "信念坚定型";
+  if (score >= total - 1) return "担当奋进型";
+  if (score >= Math.ceil(total / 2)) return "潜力提升型";
+  return "成长蓄力型";
+}
+
+function renderQaResult(question, answer) {
+  const result = document.getElementById("qaResult");
+  result.innerHTML = `<strong>最新回答</strong><p>问题：${question}</p><p>回答：${answer}</p>`;
+  const followup = document.getElementById("followupQuestions");
+  followup.innerHTML = [
+    "这和当代大学生的关系是什么？",
+    "能结合一个人物故事再解释吗？",
+    "这个观点在校园实践里怎么做？"
+  ]
+    .map((q) => `<button class="sample-btn" type="button">${q}</button>`)
+    .join("");
+}
+
+function resolveGuidePresetQuestion(question, style) {
+  if (question.includes("什么是红岩精神")) {
+    return style === "plain"
+      ? "红岩精神是中国共产党人在重庆革命斗争实践中形成的精神品格。"
+      : "红岩精神形成于革命斗争实践，核心是理想信念、爱国情怀、斗争意志和浩然正气。";
+  }
+  if (question.includes("为什么值得青年学习")) {
+    return style === "plain"
+      ? "它帮助青年把个人成长与国家责任连接起来。"
+      : "红岩精神能引导青年在压力环境中保持长期目标，把责任担当落实到学习与实践中。";
+  }
+  return style === "plain"
+    ? "旧址是理解红岩精神的重要历史现场。"
+    : "旧址承载着真实历史记忆，帮助我们理解革命者如何在极端环境中坚守信仰并形成红岩精神。";
+}
+
+function renderGuideSourceTags(topic) {
+  const container = document.getElementById("guideSourceTags");
+  const tags = [];
+  if (/江|许|陈|王/.test(topic)) tags.push("来源：人物故事");
+  if (topic.includes("旧址") || topic.includes("纪念馆")) tags.push("来源：导览节点");
+  tags.push("来源：精神概览");
+  container.innerHTML = tags.map((tag) => `<span class="source-tag">${tag}</span>`).join("");
 }
